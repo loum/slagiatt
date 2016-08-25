@@ -14,18 +14,15 @@ endif
 
 # OK, set some globals.
 WHEEL=~/wheelhouse
-SPARK_HOME=$(shell [ -d /usr/lib/spark ] && echo /usr/lib/spark || echo )
-ifneq ($(SPARK_HOME), )
-	PYTHONPATH := ${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.9-src.zip
-endif
 
 GIT=$(shell which git 2>/dev/null)
 
 # Define the test suit to run.
-TESTS=slagiatt/tests
+TESTS=slagiatt/route/tests \
+    slagiatt/tests
 
 tests:
-	SPARK_HOME=$(SPARK_HOME) PYTHONPATH=$(PYTHONPATH) \
+	PYTHONPATH=$(PYTHONPATH) SLAGIATT_CONF="config_for_test.py" \
 	$(shell which py.test) \
 	--cov-config ~/.coveragerc --cov=slagiatt -sv $(TESTS)
 

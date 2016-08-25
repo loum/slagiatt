@@ -53,7 +53,7 @@ Malformed ``POST`` requests will return a HTTP 400 Bad Request error.
 Query existing Devices
 **********************
 
-Existing devices can be queries with the ``GET`` HTTP method.
+Existing devices can be queried with the ``GET`` HTTP method.
 
 To return all available devices::
 
@@ -91,7 +91,7 @@ To return a single device with a known private key::
 To return a list of devices that match a given criteria you must
 supply the parameters as a JSON string::
 
-    GET /api/person?q={ "equip_inst_id": 21175}
+    GET /api/device?q={"equip_inst_id": 21175}
 
     {
         "num_results": 1,

@@ -1,10 +1,19 @@
-from slagiatt.shared.model import db
+"""SQLAlchemy class mapping for the Device route.
+"""
+import sqlalchemy
+
+import slagiatt.common
 
 
-class Device(db.Model):
-    equip_inst_id = db.Column(db.Integer, primary_key=True) 
-    physical_name = db.Column(db.Unicode, unique=True)
-    physical_name_extn = db.Column(db.Unicode)
-    nw_ip_addr = db.Column(db.Unicode)
-    equip_inst_id_1 = db.Column(db.Integer)
-    equip_status_id = db.Column(db.Integer)
+class Device(slagiatt.common.BASE):
+    """Model abstraction of a NBN device in the field.
+
+    """
+    __tablename__ = 'device'
+
+    equip_inst_id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    physical_name = sqlalchemy.Column(sqlalchemy.Unicode, unique=True)
+    physical_name_extn = sqlalchemy.Column(sqlalchemy.Unicode)
+    nw_ip_addr = sqlalchemy.Column(sqlalchemy.Unicode)
+    equip_inst_id_1 = sqlalchemy.Column(sqlalchemy.Integer)
+    equip_status_id = sqlalchemy.Column(sqlalchemy.Integer)
